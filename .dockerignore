@@ -1,0 +1,13 @@
+.git
+.gitignore
+.pytest_cache
+__pycache__
+*.pyc
+*.pyo
+.venv
+venv
+.env
+*.md
+chroma_db
+*.pdf
+.DS_Store

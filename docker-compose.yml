@@ -1,0 +1,19 @@
+services:
+  rag-qa:
+    build: .
+    ports:
+      - "8501:8501"
+      - "8000:8000"
+    environment:
+      - GOOGLE_API_KEY=${GOOGLE_API_KEY}
+      - EMBEDDING_MODEL=${EMBEDDING_MODEL:-all-mpnet-base-v2}
+      - LLM_MODEL=${LLM_MODEL:-gemini-2.0-flash}
+      - CHUNK_SIZE=${CHUNK_SIZE:-1000}
+      - CHUNK_OVERLAP=${CHUNK_OVERLAP:-200}
+      - RETRIEVER_K=${RETRIEVER_K:-5}
+    volumes:
+      - chroma_data:/app/chroma_db
+    restart: unless-stopped
+
+volumes:
+  chroma_data:
